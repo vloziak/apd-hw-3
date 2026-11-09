@@ -28,6 +28,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BD93F2630A252ED001A4535 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BD93F2730A25311001A4535 /* AGENT_WORKLOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENT_WORKLOG.md; sourceTree = "<group>"; };
+		5BD93F2830A25328001A4535 /* PLAN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PLAN.md; sourceTree = "<group>"; };
+		5BD93F2930A25343001A4535 /* SUBMISSION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SUBMISSION.md; sourceTree = "<group>"; };
+		5BD93F2A30A2534A001A4535 /* TASKS_AND_GRADES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TASKS_AND_GRADES.md; sourceTree = "<group>"; };
 		A4A65BCA307F60EF00D6717F /* StudentDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A65BD7307F60F200D6717F /* StudentDirectoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentDirectoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A65BE1307F60F200D6717F /* StudentDirectoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentDirectoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +89,11 @@
 				A4A65BDA307F60F200D6717F /* StudentDirectoryTests */,
 				A4A65BE4307F60F200D6717F /* StudentDirectoryUITests */,
 				A4A65BCB307F60EF00D6717F /* Products */,
+				5BD93F2630A252ED001A4535 /* README.md */,
+				5BD93F2730A25311001A4535 /* AGENT_WORKLOG.md */,
+				5BD93F2830A25328001A4535 /* PLAN.md */,
+				5BD93F2930A25343001A4535 /* SUBMISSION.md */,
+				5BD93F2A30A2534A001A4535 /* TASKS_AND_GRADES.md */,
 			);
 			sourceTree = "<group>";
 		};
