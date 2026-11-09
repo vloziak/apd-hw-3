@@ -28,6 +28,9 @@ final class StudentListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = subject ?? "Students"
         setupTableView()
+        if subject == nil {
+            setupAddButton()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +50,25 @@ final class StudentListViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.accessibilityIdentifier = "studentList"
     }
+    
+    private func setupAddButton() {
+        let addItem = UIBarButtonItem(
+            systemItem: .add,
+            primaryAction: UIAction { [weak self] _ in
+                self?.showAddForm()
+            }
+        )
+        addItem.accessibilityIdentifier = "addStudentButton"
+        addItem.accessibilityLabel = "Add student"
+        navigationItem.rightBarButtonItem = addItem
+    }
+    
+    private func showAddForm() {
+        let formController = StudentFormViewController(store: store) { [weak self] in
+            self?.tableView.reloadData()
+        }
+        present(UINavigationController(rootViewController: formController), animated: true)
+    }
 }
 
 extension StudentListViewController: UITableViewDataSource {
@@ -63,6 +85,23 @@ extension StudentListViewController: UITableViewDataSource {
         }
         cell.configure(with: students[indexPath.row])
         return cell
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        guard editingStyle == .delete else { return }
+        let student = students[indexPath.row]
+        do {
+            try store.deleteStudent(id: student.id)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch let error as StudentStoreError {
+            showErrorAlert(message: error.message)
+        } catch {
+            showErrorAlert(message: "Something went wrong. Please try again.")
+        }
     }
 }
 

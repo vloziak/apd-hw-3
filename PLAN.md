@@ -102,7 +102,7 @@ never show up in a subject list.
 - [x] Detail screen and navigation
 - [x] Subject-filtered list
 - [ ] Unit and UI tests
-- [ ] Optional add/edit/delete bonus, if attempted
+- [x] Optional add/edit/delete bonus, if attempted
 - [ ] Local verification and CI review
 - [ ] Final diff and evidence review
 

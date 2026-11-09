@@ -18,23 +18,21 @@ you rejected or revised; if none was rejectable, explain why.
 | 2026-11-09 | Claude Code (Claude Opus 5.5): explained steps 3 and 4 (detail screen and subject filter) in detail and checked the code in a separate copy of the project before giving it to me. | I asked for a detailed explanation of what and where to add and how to check it. I created `StudentDetailViewController` myself and changed one method in `StudentListViewController`, then read every line. I checked why the detail screen keeps only the student `id` and reads the student from the store (no old copy after edit), why the content is in a scroll view (big Dynamic Type text), and why the subject button uses `[weak self]` (no retain cycle). The subject list reuses the same list controller with `subject`, so the filter is exact, case sensitive and keeps store order. | Claude's build of the copy succeeded with no warnings; in the simulator Ada → Math showed Ada, Katherine, Donald; my files are the same as the checked copy |
 | 2026-11-09 | Claude Code (Claude Opus 5.5): answered if it is correct that subjects can be chosen only from the detail screen and not from the first screen. | Accepted. TASKS_AND_GRADES.md says that each shown subject must be interactive, it doesn't ask for a subject list on the first screen, and private checks can't add new requirements. Subjects in the list cells would also need to be buttons, with the same `subjectButton.<subject>` identifier in many rows, which could break UI tests. So I kept the design as it is. | TASKS_AND_GRADES.md, task 3 |
 | 2026-11-09 | Claude Code (Claude Opus 5.5): drafted the rows of this table from our chat history. | Revised. I asked for this help with the wording in simple English, with the focus that I asked for explanations. I checked every row against what really happened in the chat. | This file; chat history |
+| 2026-11-10 | Claude Code (Claude Opus 5.5): explained why GitHub Actions didn't run in my fork. | I asked why I don't have CI tests on GitHub. Claude first thought I had enabled workflows, but I didn't, so I corrected it. Claude checked with GitHub API that the workflow is active and Actions are allowed, but there were still 0 runs. Turning the workflow off and on didn't help. It started only after I detached my repository from the fork network ("Leave fork network"). | GitHub API: 0 runs before, run #1 after detaching |
+| 2026-11-10 | Claude Code (Claude Opus 5.5): explained which tests CI runs. | I asked if all these tests are correct. Claude explained that CI runs the exact README command, so only the 4 starter tests run now, and they only show that the project builds and starts on a clean machine. My own tests are still needed. | CI run: https://github.com/vloziak/apd-hw-3/actions/runs/42711472648 — success |
+| 2026-11-10 | Claude Code (Claude Opus 5.5): wrote the bonus add/edit/delete code and checked it in a separate copy with 3 UI tests before giving it to me. | I asked where to add the code. I created `ErrorAlert.swift` and `StudentFormViewController.swift` myself and read every line. I checked that the form doesn't change data itself and only calls `addStudent`/`updateStudent`, which already validate, that age uses `Int(text)` with `guard` and no force unwrap, and that every error shows an alert and leaves the store the same. I chose that if a student is deleted, the detail screen shows "Student deleted" instead of an old copy. | Build succeeded; 3 UI tests passed in the copy (add with age 0 then 5, edit name, swipe delete); my files are the same as the checked copy |
 
 ## Final review
 
-- Agent/tool disclosure: I used Claude Code (Claude Opus 5.5) to explain the
-  task, the Xcode errors and the code, to draft PLAN.md and this worklog, and
-  to review my work. I created the files, pasted and read the code, ran the
-  app and made the commits myself.
 - Accepted and rejected/revised recommendations: accepted the list screen
-  design (one shared store, reusable cell, SnapKit, Dynamic Type) and the
-  detail screen that keeps only the student id and reuses the list controller
-  for subjects. Accepted to keep subjects only on the detail screen. Revised:
-  fork the repository later instead of creating a new one now. Rejected: the
-  `StudentDirectoryApp.swift` change, because the app works without it.
-- Exact local test command and result:
-  `xcodebuild -project StudentDirectory.xcodeproj -scheme StudentDirectory -destination 'platform=iOS Simulator,name=iPhone 17' test`
-  on 2026-11-09 after step 2: `** TEST SUCCEEDED **`, the 4 starter tests
-  passed (my own tests are not written yet).
-- CI URL/status: not run yet, the fork will be created before submission.
-- Known limitation or remaining risk: work in progress. List, detail screen
-  and subject filter are done. The bonus and my own tests are not done yet.
+  design (one shared store, reusable cell, SnapKit, Dynamic Type), the detail
+  screen that keeps only the student id and reuses the list controller for
+  subjects, and the bonus form that only calls store methods. Accepted to keep
+  subjects only on the detail screen. Revised: fork the repository later
+  instead of creating a new one now. Revised: the `StudentDirectoryApp.swift`
+  change was first rejected after a wrong test and later accepted, because
+  without it the app shows a black screen on relaunch.
+- CI URL/status: https://github.com/vloziak/apd-hw-3/actions/runs/42711472648
+  — success (4 starter tests, before the bonus and my own tests).
+- Known limitation or remaining risk: work in progress. List, detail screen,
+  subject filter and the bonus are done. My own tests are not written yet.

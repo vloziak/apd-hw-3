@@ -34,6 +34,7 @@ final class StudentDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.accessibilityIdentifier = "studentDetails"
+        setupEditButton()
         setupViews()
         setupConstraints()
     }
@@ -41,6 +42,24 @@ final class StudentDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showStudent()
+    }
+
+    private func setupEditButton() {
+        let editItem = UIBarButtonItem(
+            systemItem: .edit,
+            primaryAction: UIAction { [weak self] _ in
+                self?.showEditForm()
+            }
+        )
+        editItem.accessibilityIdentifier = "editStudentButton"
+        navigationItem.rightBarButtonItem = editItem
+    }
+
+    private func showEditForm() {
+        let formController = StudentFormViewController(store: store, studentID: studentID) { [weak self] in
+            self?.showStudent()
+        }
+        present(UINavigationController(rootViewController: formController), animated: true)
     }
 
     private func setupViews() {
@@ -100,7 +119,12 @@ final class StudentDetailViewController: UIViewController {
     }
 
     private func showStudent() {
-        guard let student else { return }
+        guard let student else {
+            title = "Student deleted"
+            contentStack.isHidden = true
+            navigationItem.rightBarButtonItem = nil
+            return
+        }
 
         title = student.name
         avatarImageView.image = UIImage(named: student.avatarName) ?? UIImage(named: "avatar-default")
