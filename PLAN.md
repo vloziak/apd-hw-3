@@ -96,15 +96,21 @@ delete. I allow it, because it deletes from the same shared store, so the
 student disappears from all lists. New students have no subjects, so they
 never show up in a subject list.
 
+If age is not a number (letters or empty), I don't call the store and show
+alert "Age must be a whole number.", because `Int(text)` returns nil.
+
+If the student was deleted, detail screen doesn't show old data. It shows
+title "Student deleted", hides the content and removes Edit button.
+
 ## Milestones
 
 - [x] Student list and reusable cell
 - [x] Detail screen and navigation
 - [x] Subject-filtered list
-- [ ] Unit and UI tests
+- [x] Unit and UI tests
 - [x] Optional add/edit/delete bonus, if attempted
-- [ ] Local verification and CI review
-- [ ] Final diff and evidence review
+- [x] Local verification and CI review
+- [x] Final diff and evidence review
 
 ## Risks and checks
 
