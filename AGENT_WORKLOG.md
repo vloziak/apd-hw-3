@@ -24,7 +24,7 @@ you rejected or revised; if none was rejectable, explain why.
 - Agent/tool disclosure: I used Claude Code (Claude Opus 5.5) to explain the
   task, the Xcode errors and the code, to draft PLAN.md and this worklog, and
   to review my work. I created the files, pasted and read the code, ran the
-  app and made the commits myself .
+  app and made the commits myself.
 - Accepted and rejected/revised recommendations: accepted the list screen
   design (one shared store, reusable cell, SnapKit, Dynamic Type) and the
   detail screen that keeps only the student id and reuses the list controller
