@@ -99,8 +99,8 @@ never show up in a subject list.
 ## Milestones
 
 - [x] Student list and reusable cell
-- [ ] Detail screen and navigation
-- [ ] Subject-filtered list
+- [x] Detail screen and navigation
+- [x] Subject-filtered list
 - [ ] Unit and UI tests
 - [ ] Optional add/edit/delete bonus, if attempted
 - [ ] Local verification and CI review
